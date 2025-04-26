@@ -3,15 +3,27 @@ import Filter from "@/components/Filter";
 const mockFilters = [
   {
     label: "All",
-    value: "all",
+    value: "firstall",
   },
   {
     label: "Web",
     value: "web",
   },
   {
-    label: "Media",
-    value: "media",
+    label: "Art",
+    value: "art",
+  },
+  {
+    label: "Movies",
+    value: "movies",
+  },
+  {
+    label: "Games",
+    value: "games",
+  },
+  {
+    label: "Music",
+    value: "music",
   },
 ];
 

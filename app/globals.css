@@ -47,6 +47,14 @@
   }
 }
 
+@utility scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 :root {
   --background: hsl(246 6% 9%);
   --background-tint: hsl(246 6% 15%);
