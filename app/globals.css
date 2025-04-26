@@ -3,6 +3,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-background-tint: var(--background-tint);
+  --color-foreground-tint: var(--foreground-tint);
 
   --text-heading-1: var(--heading-1);
   --text-heading-1--font-weight: 800;
@@ -46,8 +48,10 @@
 }
 
 :root {
-  --background: #e0e0e0;
-  --foreground: #323129;
+  --background: hsl(246 6% 9%);
+  --background-tint: hsl(246 6% 15%);
+  --foreground: hsl(256 6% 93.2%);
+  --foreground-tint: hsl(256 6% 96.2%);
 
   --heading-1: 3rem;
   --heading-2: 2.5rem;
