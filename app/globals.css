@@ -5,6 +5,8 @@
   --color-foreground: var(--foreground);
   --color-background-tint: var(--background-tint);
   --color-foreground-tint: var(--foreground-tint);
+  --color-foreground-shade: var(--foreground-shade);
+  --color-background-tint-2: var(--background-tint-2);
 
   --text-heading-1: var(--heading-1);
   --text-heading-1--font-weight: 800;
@@ -31,20 +33,19 @@
   --text-heading-6--line-height: 1.15;
 
   --text-paragraph: var(--paragraph);
-  --text-paragraph--font-weight: 500;
+  --text-paragraph--font-weight: 400;
 
   --text-small: var(--small);
-  --text-small--font-weight: 500;
+  --text-small--font-weight: 400;
+
+  --text-extra-small: var(--extra-small);
+  --text-small--font-weight: 400;
 }
 
 @utility container {
-  max-width: 90rem;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 1.75rem;
-
-  @variant md {
-    padding: 0 2.5rem;
-  }
+  padding: 0 var(--container-whitespace);
 }
 
 @utility scrollbar-hidden {
@@ -55,11 +56,19 @@
   }
 }
 
+@utility standard-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--col-count), minmax(0, 1fr));
+  column-gap: var(--col-gap);
+}
+
 :root {
   --background: hsl(246 6% 9%);
   --background-tint: hsl(246 6% 15%);
+  --background-tint-2: hsl(246 6% 20%);
   --foreground: hsl(256 6% 93.2%);
   --foreground-tint: hsl(256 6% 96.2%);
+  --foreground-shade: hsl(256 6% 70%);
 
   --heading-1: 3rem;
   --heading-2: 2.5rem;
@@ -69,6 +78,35 @@
   --heading-6: 1.25rem;
   --paragraph: 1rem;
   --small: 0.875rem;
+  --extra-small: 0.75rem;
+
+  --container-max-width: 90rem;
+  --container-whitespace: 1.75rem;
+  --col-count: 4;
+  --col-gap: 1.75rem;
+
+  --current-container-content-size: calc(
+    min(var(--container-max-width), calc(100vw)) -
+      (var(--container-whitespace) * 2)
+  );
+
+  --current-col-size: calc(
+    (
+        var(--current-container-content-size) - (var(--col-count) - 1) *
+          var(--col-gap)
+      ) / var(--col-count)
+  );
+
+  --current-col-with-gap: calc(var(--current-col-size) + var(--col-gap));
+
+  @media only screen and (min-width: 768px) {
+    --col-count: 8;
+    --col-gap: 2.5rem;
+    --container-whitespace: 2.5rem;
+  }
+  @media only screen and (min-width: 1024px) {
+    --col-count: 12;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -81,6 +119,7 @@
     --heading-6: 1.5rem;
     --paragraph: 1.25rem;
     --small: 1rem;
+    --extra-small: 0.875rem;
   }
 }
 
