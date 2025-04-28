@@ -10,7 +10,7 @@ export default function TagWrapper({ tags }: { tags: string[] }) {
   }
 
   return (
-    <div className='flex flex-wrap gap-x-2 gap-y-2'>
+    <div className='flex flex-wrap gap-x-2 gap-y-2 mt-auto'>
       {finalTags.map((tag) => (
         <Tag name={tag} key={`tag-wrapper-${tag}`} />
       ))}

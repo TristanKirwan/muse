@@ -20,18 +20,18 @@ export default function InspirationCard({
   return (
     <article
       className={cn(
-        "bg-background-tint px-1 pt-1 rounded-lg flex flex-col",
+        "bg-background-tint px-1 pt-1 rounded-lg flex flex-col h-full",
         className
       )}
     >
       <NextImage
         src={imageUrl}
         alt=''
-        className='w-full h-full object-cover rounded-t-lg aspect-[12/4]'
+        className='w-full object-cover rounded-t-lg aspect-[12/4]'
         width='100'
         height='75'
       />
-      <div className='flex px-4 py-4 flex-col gap-y-2'>
+      <div className='flex px-4 py-4 flex-col gap-y-2 grow'>
         {title && <h2 className='text-body font-bold'>{title}</h2>}
         {description && (
           <p className='text-small font-regular text-foreground-shade'>
