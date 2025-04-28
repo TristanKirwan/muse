@@ -7,6 +7,7 @@ interface IFilterProps {
     label: string;
     value: string;
   }[];
+  filterCallback?: (value: string) => void;
 }
 
 const springAnimationConfig = {
@@ -15,7 +16,10 @@ const springAnimationConfig = {
   bounce: 0,
 };
 
-export default function Filter({ possibleFilters }: IFilterProps) {
+export default function Filter({
+  possibleFilters,
+  filterCallback,
+}: IFilterProps) {
   const activeFilterRef = useRef<HTMLButtonElement>(null);
   const leftGradientRef = useRef<HTMLSpanElement>(null);
   const rightGradientRef = useRef<HTMLSpanElement>(null);
@@ -60,12 +64,6 @@ export default function Filter({ possibleFilters }: IFilterProps) {
       animate(leftGradientRef.current, { opacity: 0 }, springAnimationConfig);
     }
 
-    console.log(
-      "scrollLeft, target.scrollWdith - target.clientWidth",
-      scrollLeft,
-      target.scrollWidth - target.clientWidth
-    );
-
     if (scrollLeft < target.scrollWidth - target.clientWidth) {
       animate(rightGradientRef.current, { opacity: 1 }, springAnimationConfig);
     } else if (scrollLeft === target.scrollWidth - target.clientWidth) {
@@ -95,6 +93,13 @@ export default function Filter({ possibleFilters }: IFilterProps) {
     );
   }
 
+  function handleFilterClick(value: string) {
+    setSelectedFilter(value);
+    if (filterCallback) {
+      filterCallback(value);
+    }
+  }
+
   if (!Array.isArray(possibleFilters) || possibleFilters.length === 0)
     return null;
 
@@ -120,7 +125,7 @@ export default function Filter({ possibleFilters }: IFilterProps) {
           <button
             key={filter.value}
             className='px-4 py-1 text-small cursor-pointer'
-            onClick={() => setSelectedFilter(filter.value)}
+            onClick={() => handleFilterClick(filter.value)}
             onMouseOver={handleMouseOver}
             onMouseLeave={handleMouseLeave}
             ref={filter.value === selectedFilter ? activeFilterRef : null}

@@ -1,10 +1,15 @@
+"use client";
+
+import { AnimatePresence, motion, MotionConfig } from "motion/react";
+import { useCallback, useRef, useState } from "react";
+
 import Filter from "@/components/Filter";
 import InspirationCard from "@/components/InspirationCard";
 
 const mockFilters = [
   {
     label: "All",
-    value: "firstall",
+    value: "all",
   },
   {
     label: "Web",
@@ -119,22 +124,89 @@ const mockCards = [
   },
 ];
 
+type Direction = "forward" | "backward";
+
 export default function CardSection() {
+  const [currentCards, setCurrentCards] = useState(mockCards);
+  const [direction, setDirection] = useState<Direction>("forward");
+  const currentFilter = useRef(mockFilters[0].value);
+
+  const changeFilter = useCallback((filterVal: string) => {
+    const indexOfCurrentFilter = mockFilters.findIndex(
+      (filter) => filter.value === currentFilter.current
+    );
+    const indexOfNewFilter = mockFilters.findIndex(
+      (filter) => filter.value === filterVal
+    );
+
+    currentFilter.current = filterVal;
+    setDirection(
+      indexOfCurrentFilter < indexOfNewFilter ? "forward" : "backward"
+    );
+    const newCards = mockCards.filter(
+      (card) => filterVal === "all" || card.type === filterVal
+    );
+    setCurrentCards(newCards);
+  }, []);
+
   return (
     <section className='flex flex-col gap-y-10'>
-      <Filter possibleFilters={mockFilters} />
+      <Filter possibleFilters={mockFilters} filterCallback={changeFilter} />
       <div className='standard-grid gap-y-6'>
-        {mockCards.map((card, index) => (
-          <InspirationCard
-            key={index}
-            title={card.title}
-            description={card.description}
-            imageUrl={card.imageUrl}
-            tags={card.tags}
-            className='col-span-full sm:col-span-2 md:col-span-4 lg:col-span-4'
-          />
-        ))}
+        <AnimationWrapper cards={currentCards} direction={direction} />
       </div>
     </section>
+  );
+}
+
+function AnimationWrapper({
+  cards,
+  direction,
+}: {
+  cards: typeof mockCards;
+  direction: Direction;
+}) {
+  const variants = {
+    initial: (direction: Direction) => ({
+      opacity: 0,
+      x: direction === "forward" ? 48 : -48,
+    }),
+    target: {
+      opacity: 1,
+      x: 0,
+    },
+    exit: (direction: Direction) => ({
+      opacity: 0,
+      x: direction === "forward" ? -48 : 48,
+    }),
+  };
+
+  return (
+    <MotionConfig>
+      <AnimatePresence mode='popLayout' custom={direction}>
+        {cards.map((card) => (
+          <motion.div
+            // Brother please enlighten me why this works but initial="initial" doesn't. That would make sense, except for that exit="exit" works?????
+            initial={{
+              opacity: 0,
+              x: direction === "forward" ? 48 : -48,
+            }}
+            animate='target'
+            exit='exit'
+            variants={variants}
+            className='col-span-full sm:col-span-2 md:col-span-4 lg:col-span-4'
+            key={`card-${card.title}`}
+            layout
+          >
+            <InspirationCard
+              title={card.title}
+              description={card.description}
+              imageUrl={card.imageUrl}
+              tags={card.tags}
+            />
+          </motion.div>
+        ))}
+      </AnimatePresence>
+    </MotionConfig>
   );
 }
