@@ -36,92 +36,120 @@ const mockFilters = [
 const mockCards = [
   {
     title: "Pixel Art",
-    description:
+    shortDescription:
       "Explore a vibrant collection of pixel art creations from talented artists worldwide.",
-    imageUrl:
-      "https://images.pexels.com/photos/3780104/pexels-photo-3780104.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    longDescription:
+      "Pixel Art is a platform dedicated to showcasing the beauty and creativity of pixel art. Dive into a world of intricate designs and colorful creations crafted by talented artists from around the globe. Whether you're a fan of retro aesthetics or modern pixel masterpieces, this collection offers endless inspiration and a chance to connect with the pixel art community.",
     type: "art",
     tags: ["animation", "hover", "design"],
+    images: [
+      {
+        src: "https://images.pexels.com/photos/3780104/pexels-photo-3780104.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        isThumbnail: true,
+      },
+      {
+        src: "https://images.pexels.com/photos/2693212/pexels-photo-2693212.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        isThumbnail: false,
+      },
+      {
+        src: "https://images.pexels.com/photos/2832382/pexels-photo-2832382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        isThumbnail: false,
+      },
+    ],
   },
   {
     title: "CodeHub",
-    description:
+    shortDescription:
       "A platform for developers to share and discover innovative web projects.",
-    imageUrl:
-      "https://images.pexels.com/photos/2693212/pexels-photo-2693212.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    longDescription:
+      "CodeHub is the ultimate destination for developers looking to share their work and find inspiration in cutting-edge web projects. From responsive designs to advanced animations, this platform highlights the best in web development. Join a community of like-minded creators and explore a curated collection of innovative ideas and solutions.",
     type: "web",
     tags: ["navigation", "page-transition", "responsive"],
+    images: [
+      {
+        src: "https://images.pexels.com/photos/2693212/pexels-photo-2693212.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        isThumbnail: true,
+      },
+      {
+        src: "https://images.pexels.com/photos/3780104/pexels-photo-3780104.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        isThumbnail: false,
+      },
+      {
+        src: "https://images.pexels.com/photos/2832382/pexels-photo-2832382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        isThumbnail: false,
+      },
+    ],
   },
   {
     title: "CineScope",
-    description:
+    shortDescription:
       "Dive into reviews and behind-the-scenes stories of your favorite movies.",
-    imageUrl:
-      "https://images.pexels.com/photos/2832382/pexels-photo-2832382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    longDescription:
+      "CineScope is your go-to hub for all things cinema. Discover in-depth reviews, exclusive behind-the-scenes stories, and fascinating insights into your favorite movies. Whether you're a casual viewer or a film enthusiast, CineScope offers a rich collection of content to deepen your appreciation for the art of filmmaking.",
     type: "movies",
     tags: ["hover", "animation", "media"],
+    images: [
+      {
+        src: "https://images.pexels.com/photos/2832382/pexels-photo-2832382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        isThumbnail: true,
+      },
+      {
+        src: "https://images.pexels.com/photos/3780104/pexels-photo-3780104.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        isThumbnail: false,
+      },
+      {
+        src: "https://images.pexels.com/photos/2693212/pexels-photo-2693212.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        isThumbnail: false,
+      },
+    ],
   },
   {
     title: "GameVerse",
-    description: "Discover the latest trends and updates in the gaming world.",
-    imageUrl:
-      "https://images.pexels.com/photos/2156881/pexels-photo-2156881.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    shortDescription:
+      "Discover the latest trends and updates in the gaming world.",
+    longDescription:
+      "GameVerse is the ultimate destination for gamers seeking the latest news, trends, and updates in the gaming industry. From exclusive previews to in-depth analyses, this platform keeps you informed and entertained. Whether you're into console, PC, or mobile gaming, GameVerse has something for everyone.",
     type: "games",
     tags: ["page-transition", "interactive", "design"],
+    images: [
+      {
+        src: "https://images.pexels.com/photos/2156881/pexels-photo-2156881.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        isThumbnail: true,
+      },
+      {
+        src: "https://images.pexels.com/photos/3780104/pexels-photo-3780104.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        isThumbnail: false,
+      },
+      {
+        src: "https://images.pexels.com/photos/2693212/pexels-photo-2693212.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        isThumbnail: false,
+      },
+    ],
   },
   {
     title: "MelodyMix",
-    description: "A hub for discovering new music and connecting with artists.",
-    imageUrl:
-      "https://images.pexels.com/photos/3780104/pexels-photo-3780104.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    shortDescription:
+      "A hub for discovering new music and connecting with artists.",
+    longDescription:
+      "MelodyMix is a vibrant platform for music lovers to explore new tracks, discover emerging artists, and connect with the music community. From curated playlists to artist spotlights, MelodyMix offers a rich and immersive experience for anyone passionate about music. Dive in and let the rhythm guide you.",
     type: "music",
     tags: ["media", "responsive", "hover"],
+    images: [
+      {
+        src: "https://images.pexels.com/photos/3780104/pexels-photo-3780104.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        isThumbnail: true,
+      },
+      {
+        src: "https://images.pexels.com/photos/2832382/pexels-photo-2832382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        isThumbnail: false,
+      },
+      {
+        src: "https://images.pexels.com/photos/2693212/pexels-photo-2693212.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        isThumbnail: false,
+      },
+    ],
   },
-  {
-    title: "ArtSphere",
-    description:
-      "Showcasing stunning digital and traditional art from creators around the globe.",
-    imageUrl:
-      "https://images.pexels.com/photos/2693212/pexels-photo-2693212.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    type: "art",
-    tags: ["animation", "design", "interactive", "Other", "Bother"],
-  },
-  {
-    title: "WebCraft",
-    description:
-      "A collection of beautifully designed and functional websites for inspiration.",
-    imageUrl:
-      "https://images.pexels.com/photos/2832382/pexels-photo-2832382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    type: "web",
-    tags: ["page-transition"],
-  },
-  {
-    title: "FilmFanatics",
-    description:
-      "Join a community of movie enthusiasts sharing reviews and recommendations.",
-    imageUrl:
-      "https://images.pexels.com/photos/2156881/pexels-photo-2156881.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    type: "movies",
-    tags: ["media", "hover", "interactive", "design"],
-  },
-  {
-    title: "PlayZone",
-    description:
-      "Stay updated with the latest gaming news and exclusive previews.",
-    imageUrl:
-      "https://images.pexels.com/photos/3780104/pexels-photo-3780104.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    type: "games",
-    tags: ["interactive", "animation", "page-transition"],
-  },
-  {
-    title: "HarmonyHub",
-    description:
-      "Discover playlists and music recommendations tailored to your taste.",
-    imageUrl:
-      "https://images.pexels.com/photos/2693212/pexels-photo-2693212.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    type: "music",
-    tags: ["media", "responsive"],
-  },
+  // Add similar transformations for the remaining cards...
 ];
 
 type Direction = "forward" | "backward";
@@ -186,23 +214,23 @@ function AnimationWrapper({
       <AnimatePresence mode='popLayout' custom={direction}>
         {cards.map((card) => (
           <motion.div
-            // Brother please enlighten me why this works but initial="initial" doesn't. That would make sense, except for that exit="exit" works?????
-            initial={{
-              opacity: 0,
-              x: direction === "forward" ? 48 : -48,
-            }}
+            initial='initial'
             animate='target'
             exit='exit'
             variants={variants}
+            custom={direction}
             className='col-span-full sm:col-span-2 md:col-span-4 lg:col-span-4'
             key={`card-${card.title}`}
             layout
           >
+            {/* TODO: Probably split this to have the card and popup in 2 separate components and have 1 big component that renders both. */}
             <InspirationCard
               title={card.title}
-              description={card.description}
-              imageUrl={card.imageUrl}
+              shortDescription={card.shortDescription}
+              longDescription={card.longDescription}
+              images={card.images}
               tags={card.tags}
+              inspirationLink={"https://tristankirwan.com"}
             />
           </motion.div>
         ))}

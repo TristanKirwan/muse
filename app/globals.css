@@ -134,3 +134,7 @@ body {
     "cv12" 0, "cv13" 0, "cpsp" 0, "c2sc" 0, "salt" 0, "aalt" 0, "calt", "ccmp",
     "locl", "kern";
 }
+
+button {
+  cursor: pointer;
+}
