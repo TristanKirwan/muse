@@ -1,4 +1,5 @@
 import Arrow from "./types/Arrow";
+import Chevron from "./types/Chevron";
 import Plus from "./types/Plus";
 
 export type IconItemProps = {
@@ -9,6 +10,7 @@ export type IconItemProps = {
 export const iconsMap = {
   plus: Plus,
   arrow: Arrow,
+  chevron: Chevron,
 };
 
 export type IconType = keyof typeof iconsMap;

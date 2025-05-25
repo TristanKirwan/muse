@@ -1,40 +1,22 @@
-import PopupBase from "@/components/PopupBase";
 import TagWrapper from "@/components/TagWrapper";
 import cn from "@/utils/general/cn";
 import NextImage from "next/image";
-import { useCallback, useState } from "react";
-import TextLink from "./TextLink";
 
 interface IInspirationCardProps {
   title: string;
-  shortDescription: string;
-  longDescription: string;
-  images: {
-    src: string;
-    isThumbnail: boolean;
-  }[];
+  description: string;
+  image: { src: string; isThumbnail: boolean } | null;
   tags: string[];
   className?: string;
-  inspirationLink: string;
 }
 
 export default function InspirationCard({
   title,
-  shortDescription,
-  longDescription,
-  images,
+  description,
   tags,
+  image,
   className,
-  inspirationLink,
 }: IInspirationCardProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleClose = useCallback(() => {
-    setIsOpen(false);
-  }, []);
-
-  const thumbnailImage = images.find((image) => image.isThumbnail);
-
   return (
     <article
       className={cn(
@@ -42,14 +24,10 @@ export default function InspirationCard({
         className
       )}
     >
-      <button
-        className='bg-background-tint px-1 pt-1 rounded-lg flex flex-col h-full'
-        onClick={() => setIsOpen(true)}
-        aria-label={`View more information about ${title}`}
-      >
-        {thumbnailImage && (
+      <div className='bg-background-tint px-1 pt-1 rounded-lg flex flex-col h-full'>
+        {image && (
           <NextImage
-            src={thumbnailImage.src}
+            src={image.src}
             alt=''
             className='w-full object-cover rounded-t-lg aspect-[12/4]'
             width='100'
@@ -58,26 +36,14 @@ export default function InspirationCard({
         )}
         <div className='flex px-4 py-4 flex-col gap-y-2 grow'>
           {title && <h2 className='text-body font-bold'>{title}</h2>}
-          {shortDescription && (
+          {description && (
             <p className='text-small font-regular text-foreground-shade'>
-              {shortDescription}
+              {description}
             </p>
           )}
           {Array.isArray(tags) && tags.length > 0 && <TagWrapper tags={tags} />}
         </div>
-      </button>
-      <PopupBase isOpen={isOpen} closeCallback={handleClose}>
-        <div className='flex flex-col gap-y-4'>
-          <h3 className='font-semibold text-heading-5'>{title}</h3>
-          {Array.isArray(tags) && tags.length > 0 && <TagWrapper tags={tags} />}
-          <p className='text-small'>{longDescription}</p>
-          <TextLink
-            href={inspirationLink}
-            label={`View muse`}
-            className='self-end'
-          />
-        </div>
-      </PopupBase>
+      </div>
     </article>
   );
 }

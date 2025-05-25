@@ -5,6 +5,16 @@ import { useCallback, useRef, useState } from "react";
 
 import Filter from "@/components/Filter";
 import InspirationCard from "@/components/InspirationCard";
+import InspirationCardPopup from "@/components/InspirationCardPopup";
+
+interface ICard {
+  title: string;
+  shortDescription: string;
+  longDescription: string;
+  type: string;
+  tags: string[];
+  images: { src: string; isThumbnail: boolean }[];
+}
 
 const mockFilters = [
   {
@@ -223,18 +233,45 @@ function AnimationWrapper({
             key={`card-${card.title}`}
             layout
           >
-            {/* TODO: Probably split this to have the card and popup in 2 separate components and have 1 big component that renders both. */}
-            <InspirationCard
-              title={card.title}
-              shortDescription={card.shortDescription}
-              longDescription={card.longDescription}
-              images={card.images}
-              tags={card.tags}
-              inspirationLink={"https://tristankirwan.com"}
-            />
+            <GridItem {...card} />
           </motion.div>
         ))}
       </AnimatePresence>
     </MotionConfig>
+  );
+}
+
+function GridItem(card: ICard) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClose = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
+  const thumbnailImage = card.images.find((image) => image.isThumbnail) || null;
+
+  return (
+    <>
+      <button
+        onClick={() => setIsOpen(true)}
+        aria-label={`Read more about ${card.title}`}
+      >
+        <InspirationCard
+          title={card.title}
+          description={card.shortDescription}
+          image={thumbnailImage}
+          tags={card.tags}
+        />
+      </button>
+      <InspirationCardPopup
+        isOpen={isOpen}
+        callback={handleClose}
+        title={card.title}
+        description={card.longDescription}
+        images={card.images}
+        tags={card.tags}
+        link={"https://tristankirwan.com"}
+      />
+    </>
   );
 }
