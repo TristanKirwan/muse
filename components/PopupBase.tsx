@@ -30,15 +30,15 @@ export default function PopupBase({
   return (
     <dialog
       ref={dialogRef}
-      className='fixed w-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-(--container-whitespace) bg-transparent backdrop:bg-background/30'
+      className='fixed w-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-(--container-whitespace) h-9/10 bg-transparent backdrop:bg-background/30'
       onClose={closeCallback}
     >
-      <div className='mx-auto bg-background-tint w-full max-w-md rounded-lg px-4 py-2 flex flex-col gap-y-4'>
-        <div className='flex justify-end'>
+      <div className='relative mx-auto bg-background-tint w-full rounded-lg max-w-5xl p-4 flex flex-col gap-y-4 @container/popup'>
+        <div className='absolute top-4 right-4 flex justify-end z-10'>
           <IconButton
             iconType='plus'
             aria-label='Close popup'
-            size='default'
+            size='small'
             colorScheme='default'
             className='rotate-45'
             onClick={handleClose}

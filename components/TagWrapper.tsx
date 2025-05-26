@@ -1,11 +1,14 @@
 import Tag from "@/components/Tag";
+import cn from "@/utils/general/cn";
 
 export default function TagWrapper({
   tags,
   showAll = false,
+  className,
 }: {
   tags: string[];
   showAll?: boolean;
+  className?: string;
 }) {
   if (!tags || tags.length === 0) return null;
 
@@ -16,7 +19,7 @@ export default function TagWrapper({
   }
 
   return (
-    <div className='flex flex-wrap gap-x-2 gap-y-2 mt-auto'>
+    <div className={cn("flex flex-wrap gap-x-2 gap-y-2 mt-auto", className)}>
       {finalTags.map((tag) => (
         <Tag name={tag} key={`tag-wrapper-${tag}`} />
       ))}

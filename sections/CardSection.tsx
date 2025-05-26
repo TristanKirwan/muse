@@ -255,6 +255,7 @@ function GridItem(card: ICard) {
       <button
         onClick={() => setIsOpen(true)}
         aria-label={`Read more about ${card.title}`}
+        className='h-full'
       >
         <InspirationCard
           title={card.title}

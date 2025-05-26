@@ -8,7 +8,7 @@ export interface IconButtonProps
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     "aria-label"
   > {
-  size: "default";
+  size: "small" | "default";
   colorScheme: "default";
   className?: string;
   iconType: IconType;
@@ -27,6 +27,7 @@ export default function IconButton({
     <button
       className={cn(
         `rounded-full flex items-center justify-center border`,
+        size === "small" && "w-4 h-4",
         size === "default" && "w-8 h-8",
         colorScheme === "default" && "border-foreground",
         className
@@ -39,6 +40,7 @@ export default function IconButton({
         type={iconType}
         className={cn(
           size === "default" && "w-4 h-4",
+          size === "small" && "w-2 h-2",
           colorScheme === "default" && "text-white"
         )}
       />

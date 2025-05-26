@@ -8,9 +8,15 @@ import { useState } from "react";
 
 interface IImageCarouselProps {
   images: { src: string; isThumbnail: boolean }[];
+  className?: string;
+  imageWrapperClassName?: string;
 }
 
-export default function ImageCarousel({ images }: IImageCarouselProps) {
+export default function ImageCarousel({
+  images,
+  className,
+  imageWrapperClassName,
+}: IImageCarouselProps) {
   const [activeImageIndex, setActiveImageIndex] = useState(
     images.findIndex((image) => image.isThumbnail) || 0
   );
@@ -32,7 +38,7 @@ export default function ImageCarousel({ images }: IImageCarouselProps) {
   }
 
   return (
-    <div className='flex flex-col gap-y-4'>
+    <div className={cn("flex flex-col gap-y-4", className)}>
       <div className='relative group'>
         {images.length > 1 && (
           <div className='absolute w-full h-full pointer-events-none flex items-center justify-between z-10 opacity-0 transition-opacity rounded-lg overflow-hidden group-hover:opacity-100'>
@@ -67,12 +73,15 @@ export default function ImageCarousel({ images }: IImageCarouselProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               key={`image-${activeImageIndex}`}
-              className='w-full aspect-[12/4] overflow-hidden rounded-lg'
+              className={cn(
+                "w-full overflow-hidden rounded-lg",
+                imageWrapperClassName
+              )}
             >
               <Image
                 src={images[activeImageIndex].src}
                 alt={`Image ${activeImageIndex + 1}`}
-                className='w-full h-auto object-cover rounded-lg'
+                className='w-full h-full object-cover rounded-lg'
                 width={600}
                 height={400}
               />
