@@ -38,7 +38,7 @@ export default function PopupBase({
     >
       <motion.div
         layoutId={layoutId}
-        className='relative mx-auto bg-background-tint w-full rounded-lg max-w-5xl p-4 flex flex-col gap-y-4 @container/popup'
+        className='relative mx-auto bg-background-tint w-full rounded-lg max-w-5xl p-8 flex flex-col gap-y-4 @container/popup'
       >
         <div className='absolute top-4 right-4 flex justify-end z-10'>
           <IconButton

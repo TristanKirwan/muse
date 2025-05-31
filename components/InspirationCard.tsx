@@ -1,7 +1,6 @@
 import TagWrapper from "@/components/TagWrapper";
 import cn from "@/utils/general/cn";
-import { motion } from "motion/react";
-import NextImage from "next/image";
+import { motion, MotionConfig } from "motion/react";
 
 interface IInspirationCardProps {
   title: string;
@@ -19,36 +18,49 @@ export default function InspirationCard({
   className,
 }: IInspirationCardProps) {
   return (
-    <motion.article
-      layoutId={`inspiration-card-wrapper-${title}`}
-      className={cn(
-        "bg-background-tint px-1 pt-1 rounded-lg flex flex-col h-full",
-        className
-      )}
-    >
-      <motion.div
-        layout
-        className='bg-background-tint px-1 pt-1 rounded-lg flex flex-col h-full'
-      >
-        {image && (
-          <NextImage
-            src={image.src}
-            alt=''
-            className='w-full object-cover rounded-t-lg aspect-[12/4]'
-            width='100'
-            height='75'
-          />
+    <MotionConfig transition={{ type: "spring", duration: 0.25, bounce: 0 }}>
+      <motion.article
+        layoutId={`inspiration-card-wrapper-${title}`}
+        className={cn(
+          "bg-background-tint px-1 pt-1 rounded-lg flex flex-col h-full",
+          className
         )}
-        <div className='flex px-4 py-4 flex-col gap-y-2 grow'>
-          {title && <h2 className='text-body font-bold'>{title}</h2>}
-          {description && (
-            <p className='text-small font-regular text-foreground-shade'>
-              {description}
-            </p>
-          )}
-          {Array.isArray(tags) && tags.length > 0 && <TagWrapper tags={tags} />}
-        </div>
-      </motion.div>
-    </motion.article>
+      >
+        <motion.div className='px-1 pt-1 rounded-lg flex flex-col h-full'>
+          {/* {image && (
+            <NextImage
+              src={image.src}
+              alt=''
+              className='w-full object-cover rounded-t-lg aspect-[12/4]'
+              width='100'
+              height='75'
+            />
+          )} */}
+          <div className='flex px-4 py-4 flex-col items-start gap-y-2 grow'>
+            <motion.div
+              layoutId={`inspiration-card-metadata-${title}`}
+              className='flex flex-col items-start gap-y-2'
+            >
+              {title && (
+                <motion.h2 className='text-body font-bold'>{title}</motion.h2>
+              )}
+              {Array.isArray(tags) && tags.length > 0 && (
+                <motion.div layout>
+                  <TagWrapper tags={tags} />
+                </motion.div>
+              )}
+            </motion.div>
+            {description && (
+              <motion.p
+                layout='position'
+                className='text-small font-regular text-start text-foreground-shade'
+              >
+                {description}
+              </motion.p>
+            )}
+          </div>
+        </motion.div>
+      </motion.article>
+    </MotionConfig>
   );
 }
