@@ -44,7 +44,7 @@ export default function InspirationCardPopup({
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.1 }}
               className='text-small grow inline-block'
             >
               {description}
@@ -53,7 +53,7 @@ export default function InspirationCardPopup({
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
+                transition={{ delay: 0.1 }}
                 className='inline-flex justify-end'
               >
                 <TextLink
@@ -65,17 +65,14 @@ export default function InspirationCardPopup({
             )}
           </div>
           {Array.isArray(images) && images.length > 0 && (
-            <motion.div
-              className='max-w-md w-full mx-auto @2xl:col-start-2 @2xl:row-start-1'
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0, transition: { delay: 0.15 } }}
-            >
+            <div className='max-w-md w-full mx-auto @2xl:col-start-2 @2xl:row-start-1'>
               <ImageCarousel
                 images={images}
                 className='flex-col-reverse @2xl:flex-col'
                 imageWrapperClassName='aspect-square'
+                layoutIdImageWrapper={`inspiration-card-thumbnail-wrapper-${title}`}
               />
-            </motion.div>
+            </div>
           )}
         </div>
       </PopupBase>

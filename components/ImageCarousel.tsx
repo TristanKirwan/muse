@@ -10,12 +10,14 @@ interface IImageCarouselProps {
   images: { src: string; isThumbnail: boolean }[];
   className?: string;
   imageWrapperClassName?: string;
+  layoutIdImageWrapper?: string;
 }
 
 export default function ImageCarousel({
   images,
   className,
   imageWrapperClassName,
+  layoutIdImageWrapper,
 }: IImageCarouselProps) {
   const [activeImageIndex, setActiveImageIndex] = useState(
     images.findIndex((image) => image.isThumbnail) || 0
@@ -46,7 +48,7 @@ export default function ImageCarousel({
               <button
                 onClick={handlePrev}
                 aria-label='See previous image'
-                className='pointer-events-auto'
+                className='pointer-events-auto h-full'
               >
                 <Icon
                   type='chevron'
@@ -58,7 +60,7 @@ export default function ImageCarousel({
               <button
                 onClick={handleNext}
                 aria-label='See next image'
-                className='pointer-events-auto'
+                className='pointer-events-auto h-full'
               >
                 <Icon type='chevron' className='w-6 h-6 text-foreground' />
               </button>
@@ -66,33 +68,43 @@ export default function ImageCarousel({
           </div>
         )}
 
-        <AnimatePresence mode='popLayout'>
-          {images[activeImageIndex] && images[activeImageIndex].src && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              key={`image-${activeImageIndex}`}
-              className={cn(
-                "w-full overflow-hidden rounded-lg",
-                imageWrapperClassName
-              )}
-            >
-              <Image
-                src={images[activeImageIndex].src}
-                alt={`Image ${activeImageIndex + 1}`}
-                className='w-full h-full object-cover rounded-lg'
-                width={600}
-                height={400}
-              />
-            </motion.div>
-          )}
+        <AnimatePresence mode='popLayout' initial={true}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ delay: 0.1, duration: 0.25 }}
+          >
+            {images[activeImageIndex] && images[activeImageIndex].src && (
+              <motion.div
+                initial={{ opacity: 0, filter: "blur(4px)" }}
+                animate={{ opacity: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, filter: "blur(4px)" }}
+                key={`image-${activeImageIndex}`}
+                className={cn(
+                  "w-full overflow-hidden rounded-lg",
+                  imageWrapperClassName
+                )}
+              >
+                <Image
+                  src={images[activeImageIndex].src}
+                  alt={`Image ${activeImageIndex + 1}`}
+                  className='w-full h-full object-cover rounded-lg'
+                  width={600}
+                  height={400}
+                />
+              </motion.div>
+            )}
+          </motion.div>
         </AnimatePresence>
       </div>
       {images.length > 1 && (
-        <div className='flex gap-x-2 justify-center'>
+        <motion.div
+          layoutId={layoutIdImageWrapper}
+          className='flex gap-x-2 justify-center'
+        >
           {images.map((image, index) => (
-            <button
+            <motion.button
               key={`thumbnail-${index}`}
               onClick={() => setActiveImageIndex(index)}
               disabled={index === activeImageIndex}
@@ -111,9 +123,9 @@ export default function ImageCarousel({
                 width={40}
                 height={40}
               />
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
       )}
     </div>
   );

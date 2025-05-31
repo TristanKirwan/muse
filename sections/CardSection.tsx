@@ -248,20 +248,22 @@ function GridItem(card: ICard) {
     setIsOpen(false);
   }, []);
 
-  const thumbnailImage = card.images.find((image) => image.isThumbnail) || null;
+  const handleOpen = useCallback(() => {
+    setIsOpen(true);
+  }, []);
 
   return (
     <>
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={handleOpen}
         aria-label={`Read more about ${card.title}`}
         className='h-full'
       >
         <InspirationCard
           title={card.title}
           description={card.shortDescription}
-          image={thumbnailImage}
           tags={card.tags}
+          images={card.images}
         />
       </button>
       <AnimatePresence>
