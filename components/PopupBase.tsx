@@ -1,15 +1,18 @@
+import { motion } from "motion/react";
 import { useEffect, useRef } from "react";
 import IconButton from "./Buttons/IconButton";
 
 interface IPopupBaseProps extends React.HTMLAttributes<HTMLDialogElement> {
   isOpen: boolean;
   closeCallback: () => void;
+  layoutId?: string;
 }
 
 export default function PopupBase({
   isOpen,
   closeCallback,
   children,
+  layoutId,
 }: IPopupBaseProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -33,7 +36,10 @@ export default function PopupBase({
       className='fixed w-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-(--container-whitespace) h-9/10 bg-transparent backdrop:bg-background/30'
       onClose={closeCallback}
     >
-      <div className='relative mx-auto bg-background-tint w-full rounded-lg max-w-5xl p-4 flex flex-col gap-y-4 @container/popup'>
+      <motion.div
+        layoutId={layoutId}
+        className='relative mx-auto bg-background-tint w-full rounded-lg max-w-5xl p-4 flex flex-col gap-y-4 @container/popup'
+      >
         <div className='absolute top-4 right-4 flex justify-end z-10'>
           <IconButton
             iconType='plus'
@@ -45,7 +51,7 @@ export default function PopupBase({
           />
         </div>
         <div className='text-foreground'>{children}</div>
-      </div>
+      </motion.div>
     </dialog>
   );
 }

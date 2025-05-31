@@ -264,15 +264,19 @@ function GridItem(card: ICard) {
           tags={card.tags}
         />
       </button>
-      <InspirationCardPopup
-        isOpen={isOpen}
-        callback={handleClose}
-        title={card.title}
-        description={card.longDescription}
-        images={card.images}
-        tags={card.tags}
-        link={"https://tristankirwan.com"}
-      />
+      <AnimatePresence>
+        {isOpen && (
+          <InspirationCardPopup
+            isOpen={isOpen}
+            callback={handleClose}
+            title={card.title}
+            description={card.longDescription}
+            images={card.images}
+            tags={card.tags}
+            link={"https://tristankirwan.com"}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }

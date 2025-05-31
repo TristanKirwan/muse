@@ -1,5 +1,6 @@
 import TagWrapper from "@/components/TagWrapper";
 import cn from "@/utils/general/cn";
+import { motion } from "motion/react";
 import NextImage from "next/image";
 
 interface IInspirationCardProps {
@@ -18,13 +19,17 @@ export default function InspirationCard({
   className,
 }: IInspirationCardProps) {
   return (
-    <article
+    <motion.article
+      layoutId={`inspiration-card-wrapper-${title}`}
       className={cn(
         "bg-background-tint px-1 pt-1 rounded-lg flex flex-col h-full",
         className
       )}
     >
-      <div className='bg-background-tint px-1 pt-1 rounded-lg flex flex-col h-full'>
+      <motion.div
+        layout
+        className='bg-background-tint px-1 pt-1 rounded-lg flex flex-col h-full'
+      >
         {image && (
           <NextImage
             src={image.src}
@@ -43,7 +48,7 @@ export default function InspirationCard({
           )}
           {Array.isArray(tags) && tags.length > 0 && <TagWrapper tags={tags} />}
         </div>
-      </div>
-    </article>
+      </motion.div>
+    </motion.article>
   );
 }
