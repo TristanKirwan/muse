@@ -1,11 +1,13 @@
 import TagWrapper from "@/components/TagWrapper";
 import cn from "@/utils/general/cn";
+import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import { motion, MotionConfig } from "motion/react";
 import Image from "next/image";
+import { RichText } from "./RichText";
 
 interface IInspirationCardProps {
   title: string;
-  description: string;
+  description: SerializedEditorState;
   images: { src: string; isThumbnail: boolean }[];
   tags: string[];
   className?: string;
@@ -43,12 +45,12 @@ export default function InspirationCard({
               )}
             </motion.div>
             {description && (
-              <motion.p
+              <motion.div
                 layout='position'
                 className='text-small font-regular text-start text-foreground-shade'
               >
-                {description}
-              </motion.p>
+                <RichText data={description} />
+              </motion.div>
             )}
             {!!images.length && (
               <motion.div

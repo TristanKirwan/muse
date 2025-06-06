@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
-import "./globals.css";
+import "./global.css";
 
 const interVariable = localFont({
   display: "swap",
   src: [
     {
-      path: "../public/fonts/InterVariable-Italic.woff2",
+      path: "../../public/fonts/InterVariable-Italic.woff2",
       style: "italic",
     },
     {
-      path: "../public/fonts/InterVariable.woff2",
+      path: "../../public/fonts/InterVariable.woff2",
       style: "normal",
     },
   ],

@@ -4,11 +4,14 @@ import TextLink from "@/components/TextLink";
 import { motion, MotionConfig } from "motion/react";
 import ImageCarousel from "./ImageCarousel";
 
+import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
+import { RichText } from "./RichText";
+
 interface IInspirationCardPopupProps {
   isOpen: boolean;
   callback: () => void;
   title: string;
-  description: string;
+  description: SerializedEditorState;
   images: { src: string; isThumbnail: boolean }[];
   tags: string[];
   link: string | null;
@@ -41,14 +44,14 @@ export default function InspirationCardPopup({
                 <TagWrapper tags={tags} />
               )}
             </motion.div>
-            <motion.p
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1 }}
               className='text-small grow inline-block'
             >
-              {description}
-            </motion.p>
+              <RichText data={description} />
+            </motion.div>
             {link && (
               <motion.div
                 initial={{ opacity: 0 }}

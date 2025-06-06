@@ -94,7 +94,8 @@
     (
         var(--current-container-content-size) - (var(--col-count) - 1) *
           var(--col-gap)
-      ) / var(--col-count)
+      ) /
+      var(--col-count)
   );
 
   --current-col-with-gap: calc(var(--current-col-size) + var(--col-gap));
@@ -127,12 +128,46 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
-  font-feature-settings: "case" 0, "dlig" 0, "frac", "dnom" 0, "numr" 0,
-    "subs" 0, "sups" 0, "tnum", "zero" 0, "ss01", "ss02" 0, "ss03" 0, "ss04" 0,
-    "ss05" 0, "ss06" 0, "ss07" 0, "ss08" 0, "cv01" 0, "cv02" 0, "cv03" 0,
-    "cv04" 0, "cv05", "cv06" 0, "cv07" 0, "cv08", "cv09" 0, "cv10", "cv11",
-    "cv12" 0, "cv13" 0, "cpsp" 0, "c2sc" 0, "salt" 0, "aalt" 0, "calt", "ccmp",
-    "locl", "kern";
+  font-feature-settings:
+    "case" 0,
+    "dlig" 0,
+    "frac",
+    "dnom" 0,
+    "numr" 0,
+    "subs" 0,
+    "sups" 0,
+    "tnum",
+    "zero" 0,
+    "ss01",
+    "ss02" 0,
+    "ss03" 0,
+    "ss04" 0,
+    "ss05" 0,
+    "ss06" 0,
+    "ss07" 0,
+    "ss08" 0,
+    "cv01" 0,
+    "cv02" 0,
+    "cv03" 0,
+    "cv04" 0,
+    "cv05",
+    "cv06" 0,
+    "cv07" 0,
+    "cv08",
+    "cv09" 0,
+    "cv10",
+    "cv11",
+    "cv12" 0,
+    "cv13" 0,
+    "cpsp" 0,
+    "c2sc" 0,
+    "salt" 0,
+    "aalt" 0,
+    "calt",
+    "ccmp",
+    "locl",
+    "kern";
+  -webkit-font-smoothing: antialiased;
 }
 
 button {
