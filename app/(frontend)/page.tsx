@@ -2,12 +2,13 @@ import config from "@payload-config";
 import { getPayload } from "payload";
 
 import CardSection from "@/sections/CardSection";
+import HomeHero from "@/sections/HomeHero";
 import mapInspirationItem from "@/utils/mapping/mapInspirationitem";
 
 export default async function Home() {
   const payload = await getPayload({ config });
 
-  // TODO: add pagination.
+  // TODO: add pagination.2
   const inspirationResult = await payload.find({
     collection: "inspiration",
     limit: 100,
@@ -19,8 +20,8 @@ export default async function Home() {
   console.log("mappedInspirationItems", mappedInspirationItems);
 
   return (
-    <main className='flex flex-col gap-y-8 pt-20 container'>
-      <h1 className='text-heading-1'>Your inspirations</h1>
+    <main>
+      <HomeHero />
       <CardSection items={mappedInspirationItems} />
     </main>
   );

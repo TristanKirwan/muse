@@ -85,6 +85,9 @@
   --col-count: 4;
   --col-gap: 1.75rem;
 
+  --standard-section-whitespace: 3.5rem;
+  --hero-whitespace: 4rem;
+
   --current-container-content-size: calc(
     min(var(--container-max-width), calc(100vw)) -
       (var(--container-whitespace) * 2)
@@ -107,6 +110,8 @@
   }
   @media only screen and (min-width: 1024px) {
     --col-count: 12;
+    --standard-section-whitespace: 5rem;
+    --hero-whitespace: 6rem;
   }
 }
 
@@ -168,6 +173,12 @@ body {
     "locl",
     "kern";
   -webkit-font-smoothing: antialiased;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--standard-section-whitespace);
 }
 
 button {

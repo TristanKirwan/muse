@@ -44,125 +44,6 @@ const mockFilters = [
   },
 ];
 
-// const mockCards = [
-//   {
-//     title: "Pixel Art",
-//     shortDescription:
-//       "Explore a vibrant collection of pixel art creations from talented artists worldwide.",
-//     longDescription:
-//       "Pixel Art is a platform dedicated to showcasing the beauty and creativity of pixel art. Dive into a world of intricate designs and colorful creations crafted by talented artists from around the globe. Whether you're a fan of retro aesthetics or modern pixel masterpieces, this collection offers endless inspiration and a chance to connect with the pixel art community.",
-//     type: "art",
-//     tags: ["animation", "hover", "design"],
-//     images: [
-//       {
-//         src: "https://images.pexels.com/photos/3780104/pexels-photo-3780104.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-//         isThumbnail: true,
-//       },
-//       {
-//         src: "https://images.pexels.com/photos/2693212/pexels-photo-2693212.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-//         isThumbnail: false,
-//       },
-//       {
-//         src: "https://images.pexels.com/photos/2832382/pexels-photo-2832382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-//         isThumbnail: false,
-//       },
-//     ],
-//   },
-//   {
-//     title: "CodeHub",
-//     shortDescription:
-//       "A platform for developers to share and discover innovative web projects.",
-//     longDescription:
-//       "CodeHub is the ultimate destination for developers looking to share their work and find inspiration in cutting-edge web projects. From responsive designs to advanced animations, this platform highlights the best in web development. Join a community of like-minded creators and explore a curated collection of innovative ideas and solutions.",
-//     type: "web",
-//     tags: ["navigation", "page-transition", "responsive"],
-//     images: [
-//       {
-//         src: "https://images.pexels.com/photos/2693212/pexels-photo-2693212.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-//         isThumbnail: true,
-//       },
-//       {
-//         src: "https://images.pexels.com/photos/3780104/pexels-photo-3780104.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-//         isThumbnail: false,
-//       },
-//       {
-//         src: "https://images.pexels.com/photos/2832382/pexels-photo-2832382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-//         isThumbnail: false,
-//       },
-//     ],
-//   },
-//   {
-//     title: "CineScope",
-//     shortDescription:
-//       "Dive into reviews and behind-the-scenes stories of your favorite movies.",
-//     longDescription:
-//       "CineScope is your go-to hub for all things cinema. Discover in-depth reviews, exclusive behind-the-scenes stories, and fascinating insights into your favorite movies. Whether you're a casual viewer or a film enthusiast, CineScope offers a rich collection of content to deepen your appreciation for the art of filmmaking.",
-//     type: "movies",
-//     tags: ["hover", "animation", "media"],
-//     images: [
-//       {
-//         src: "https://images.pexels.com/photos/2832382/pexels-photo-2832382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-//         isThumbnail: true,
-//       },
-//       {
-//         src: "https://images.pexels.com/photos/3780104/pexels-photo-3780104.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-//         isThumbnail: false,
-//       },
-//       {
-//         src: "https://images.pexels.com/photos/2693212/pexels-photo-2693212.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-//         isThumbnail: false,
-//       },
-//     ],
-//   },
-//   {
-//     title: "GameVerse",
-//     shortDescription:
-//       "Discover the latest trends and updates in the gaming world.",
-//     longDescription:
-//       "GameVerse is the ultimate destination for gamers seeking the latest news, trends, and updates in the gaming industry. From exclusive previews to in-depth analyses, this platform keeps you informed and entertained. Whether you're into console, PC, or mobile gaming, GameVerse has something for everyone.",
-//     type: "games",
-//     tags: ["page-transition", "interactive", "design"],
-//     images: [
-//       {
-//         src: "https://images.pexels.com/photos/2156881/pexels-photo-2156881.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-//         isThumbnail: true,
-//       },
-//       {
-//         src: "https://images.pexels.com/photos/3780104/pexels-photo-3780104.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-//         isThumbnail: false,
-//       },
-//       {
-//         src: "https://images.pexels.com/photos/2693212/pexels-photo-2693212.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-//         isThumbnail: false,
-//       },
-//     ],
-//   },
-//   {
-//     title: "MelodyMix",
-//     shortDescription:
-//       "A hub for discovering new music and connecting with artists.",
-//     longDescription:
-//       "MelodyMix is a vibrant platform for music lovers to explore new tracks, discover emerging artists, and connect with the music community. From curated playlists to artist spotlights, MelodyMix offers a rich and immersive experience for anyone passionate about music. Dive in and let the rhythm guide you.",
-//     type: "music",
-//     tags: ["media", "responsive", "hover"],
-//     images: [
-//       {
-//         src: "https://images.pexels.com/photos/3780104/pexels-photo-3780104.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-//         isThumbnail: true,
-//       },
-//       {
-//         src: "https://images.pexels.com/photos/2832382/pexels-photo-2832382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-//         isThumbnail: false,
-//       },
-//       {
-//         src: "https://images.pexels.com/photos/2693212/pexels-photo-2693212.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-//         isThumbnail: false,
-//       },
-//     ],
-//   },
-//   // Add similar transformations for the remaining cards...
-// ];
-
 type Direction = "forward" | "backward";
 
 export default function CardSection({ items }: { items: ICard[] }) {
@@ -189,7 +70,7 @@ export default function CardSection({ items }: { items: ICard[] }) {
   }, []);
 
   return (
-    <section className='flex flex-col gap-y-10'>
+    <section className='flex flex-col gap-y-10 container'>
       <Filter possibleFilters={mockFilters} filterCallback={changeFilter} />
       <div className='standard-grid gap-y-6'>
         <AnimationWrapper cards={currentCards} direction={direction} />
@@ -258,7 +139,7 @@ function GridItem(card: ICard) {
       <button
         onClick={handleOpen}
         aria-label={`Read more about ${card.title}`}
-        className='h-full w-full'
+        className='h-full'
       >
         <InspirationCard
           title={card.title}
