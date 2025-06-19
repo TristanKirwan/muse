@@ -17,8 +17,6 @@ export default async function Home() {
   const inspirationItems = inspirationResult.docs;
   const mappedInspirationItems = inspirationItems.map(mapInspirationItem);
 
-  console.log("mappedInspirationItems", mappedInspirationItems);
-
   return (
     <main>
       <HomeHero />

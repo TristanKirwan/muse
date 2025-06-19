@@ -7,6 +7,7 @@
   --color-foreground-tint: var(--foreground-tint);
   --color-foreground-shade: var(--foreground-shade);
   --color-background-tint-2: var(--background-tint-2);
+  --color-primary: var(--primary);
 
   --text-heading-1: var(--heading-1);
   --text-heading-1--font-weight: 800;
@@ -69,7 +70,7 @@
   --foreground: hsl(256 6% 93.2%);
   --foreground-tint: hsl(256 6% 96.2%);
   --foreground-shade: hsl(256 6% 70%);
-
+  --primary: hsl(48, 96%, 45%);
   --heading-1: 3rem;
   --heading-2: 2.5rem;
   --heading-3: 2rem;
