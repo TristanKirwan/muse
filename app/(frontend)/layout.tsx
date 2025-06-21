@@ -1,5 +1,7 @@
+import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Toaster } from "sonner";
 
 import "./global.css";
 
@@ -30,6 +32,16 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${interVariable.className} antialiased`}>
+        <Navbar />
+        <Toaster
+          toastOptions={{
+            style: {
+              background: "var(--background-tint)",
+              borderColor: "var(--background-tint-2)",
+              color: "var(--foreground)",
+            },
+          }}
+        />
         {children}
       </body>
     </html>

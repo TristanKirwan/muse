@@ -17,7 +17,8 @@ export default async function loginAction({
       email,
       password,
     });
-    return { success: true, data: result };
+
+    return { success: true, data: result.user };
   } catch (error) {
     console.error(
       `Login failed: ${error instanceof Error ? error.message : "Unknown error"}`

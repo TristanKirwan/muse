@@ -4,12 +4,14 @@ import Button from "@/components/Buttons/Button";
 import TextInput from "@/components/FormComponents/TextInput";
 import TertiaryLink from "@/components/General/TertiaryLink";
 import login from "@/serverActions/login";
+import { userStore } from "@/utils/stores/userStore";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function LoginForm() {
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const setUser = userStore.getState().setUser;
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     setError(null);
@@ -20,6 +22,7 @@ export default function LoginForm() {
     const loginResult = await login({ email, password });
 
     if (loginResult.success) {
+      setUser(loginResult.data);
       // TODO: probably redirect to inspiration collection page.
       router.push("/");
     } else {
