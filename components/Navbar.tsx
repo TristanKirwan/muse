@@ -24,6 +24,7 @@ export default function Navbar() {
         <div className='flex gap-x-4 bg-background-tint rounded-lg p-4'>
           <NavbarButton href='/' className='py-2'>
             <Icon type='logo' className='fill-foreground w-6' />
+            <span className='sr-only'>Home</span>
           </NavbarButton>
           {user ? (
             <>
