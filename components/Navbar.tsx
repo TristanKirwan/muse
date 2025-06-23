@@ -36,9 +36,14 @@ export default function Navbar() {
               </NavbarButton>
             </>
           ) : (
-            <NavbarButton href='/login'>
-              <span className='text-extra-small font-semibold'>Log in</span>
-            </NavbarButton>
+            <>
+              <NavbarButton href='/login'>
+                <span className='text-extra-small font-semibold'>Log in</span>
+              </NavbarButton>
+              <NavbarButton href='/register'>
+                <span className='text-extra-small font-semibold'>Register</span>
+              </NavbarButton>
+            </>
           )}
         </div>
       </div>

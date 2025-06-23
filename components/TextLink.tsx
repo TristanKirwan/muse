@@ -17,7 +17,7 @@ export default function TextLink({
     <Link
       href={href}
       className={cn(
-        "flex items-center gap-x-2 text-small group w-fit focus-visible:underline decoration-dashed",
+        "flex items-center gap-x-2 text-small group w-fit underline focus-visible:no-underline decoration-dashed",
         className
       )}
     >

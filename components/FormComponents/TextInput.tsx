@@ -7,6 +7,7 @@ interface ITextInputProps {
   label: string;
   name: string;
   placeholder?: string;
+  defaultValue?: string;
   required: boolean;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
@@ -19,6 +20,7 @@ export default function TextInput({
   label,
   name,
   placeholder,
+  defaultValue,
   required,
   onChange,
   onKeyDown,
@@ -39,6 +41,7 @@ export default function TextInput({
         onKeyDown={onKeyDown}
         id={name}
         autoComplete={autoComplete}
+        defaultValue={defaultValue}
         className={cn(
           "border rounded-sm border-foreground-tint/40 px-2 py-1 outline-0 focus-visible:border-foreground-tint/80 !autofill:bg-primary"
         )}
